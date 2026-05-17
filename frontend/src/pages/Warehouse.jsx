@@ -8,7 +8,28 @@ function Warehouse() {
         { id: 2, name: 'Soft Drink Bottle 1L', quantity: 200, location: 'B2', price: 60 },
         { id: 3, name: 'Snack Pack', quantity: 300, location: 'C3', price: 30 },
         { id: 4, name: 'Frozen Food', quantity: 80, location: 'A5', price: 180 },
-        { id: 5, name: 'Meat Premium', quantity: 45, location: 'D2', price: 450 }
+        { id: 5, name: 'Meat Premium', quantity: 45, location: 'D2', price: 450 },
+        { id: 6, name: 'Rice Bag 5kg', quantity: 120, location: 'E1', price: 350 },
+        { id: 7, name: 'Cooking Oil 1L', quantity: 180, location: 'B4', price: 140 },
+        { id: 8, name: 'Wheat Flour 10kg', quantity: 90, location: 'C1', price: 420 },
+        { id: 9, name: 'Chocolate Cookies', quantity: 250, location: 'A3', price: 90 },
+        { id: 10, name: 'Ice Cream Box', quantity: 15, location: 'D5', price: 220 },
+        { id: 11, name: 'Mineral Water 2L', quantity: 300, location: 'B1', price: 35 },
+        { id: 12, name: 'Instant Noodles Pack', quantity: 500, location: 'C4', price: 25 },
+        { id: 13, name: 'Tomato Ketchup 500g', quantity: 140, location: 'A6', price: 110 },
+        { id: 14, name: 'Cheese Slices', quantity: 95, location: 'D1', price: 160 },
+        { id: 15, name: 'Butter 500g', quantity: 85, location: 'E3', price: 250 },
+        { id: 16, name: 'Coffee Powder 250g', quantity: 130, location: 'B5', price: 320 },
+        { id: 17, name: 'Green Tea Pack', quantity: 110, location: 'C6', price: 180 },
+        { id: 18, name: 'Chicken Sausage', quantity: 30, location: 'D4', price: 280 },
+        { id: 19, name: 'Paneer Fresh 1kg', quantity: 75, location: 'A2', price: 360 },
+        { id: 20, name: 'Potato Chips Large', quantity: 400, location: 'E5', price: 50 },
+        { id: 21, name: 'Energy Drink Can', quantity: 220, location: 'B6', price: 120 },
+        { id: 22, name: 'Biscuits Family Pack', quantity: 310, location: 'C2', price: 70 },
+        { id: 23, name: 'Frozen Pizza', quantity: 55, location: 'D6', price: 340 },
+        { id: 24, name: 'Organic Honey 500g', quantity: 65, location: 'A4', price: 450 },
+        { id: 25, name: 'Fruit Juice 1L', quantity: 10, location: 'E2', price: 95 }
+
     ])
 
     const [searchTerm, setSearchTerm] = useState('')
