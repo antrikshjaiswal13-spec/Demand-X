@@ -42,10 +42,16 @@ function Warehouse() {
         price: ''
     })
 
+    // const filteredProducts = products.filter(p =>
+    //     p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    //     p.location.toLowerCase().includes(searchTerm.toLowerCase())
+    // )
+    
     const filteredProducts = products.filter(p =>
         p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         p.location.toLowerCase().includes(searchTerm.toLowerCase())
     )
+
 
     const handleAddClick = () => {
         setFormData({ name: '', quantity: '', location: '', price: '' })
