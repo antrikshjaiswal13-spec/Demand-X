@@ -1,5 +1,15 @@
 {
   "build": {
     "builder": "dockerfile"
+  },
+  "deploy": {
+    "startCommand": "gunicorn app:app --bind 0.0.0.0:$PORT"
+  },
+  "networking": {
+    "serviceDomains": {
+      "<hasDomain>": {
+        "port": 8000
+      }
+    }
   }
 }
