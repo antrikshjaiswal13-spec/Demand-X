@@ -16,4 +16,4 @@ COPY backend/ml_model /app/ml_model
 WORKDIR /app
 
 # Run the app
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT"]
+CMD gunicorn app:app --bind 0.0.0.0:$PORT
