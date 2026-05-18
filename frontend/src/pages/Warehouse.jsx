@@ -86,33 +86,40 @@ function Warehouse() {
     const lowStockItems = products.filter(p => p.quantity < 50).length
 
     return (
-        <div className="flex bg-slate-900 text-white min-h-screen">
+        <div className="flex w-full min-h-screen text-white" style={{background: 'linear-gradient(135deg, #050a12 0%, #0a1428 50%, #1a0033 100%)'}}>
             <Sidebar />
             <div className="ml-64 p-10 w-full">
-                <h1 className="text-5xl font-bold mb-10">Warehouse Inventory</h1>
+                <div className="mb-12">
+                    <h1 className="text-6xl font-bold gradient-text mb-2">Warehouse Inventory</h1>
+                    <p className="text-gray-400">Manage and track all inventory</p>
+                </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-4 gap-6 mb-10">
-                    <div className="bg-slate-800 p-6 rounded-2xl">
-                        <p className="text-gray-400 mb-1">Total Products</p>
-                        <p className="text-3xl font-bold">{products.length}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                    <div className="card group hover:border-cyan-400">
+                        <p className="text-gray-400 mb-2 text-sm">Total Products</p>
+                        <p className="text-4xl font-bold text-cyan-400 group-hover:text-cyan-300">{products.length}</p>
+                        <p className="mt-3 text-xs text-gray-500">Items in system</p>
                     </div>
-                    <div className="bg-slate-800 p-6 rounded-2xl">
-                        <p className="text-gray-400 mb-1">Total Units</p>
-                        <p className="text-3xl font-bold">{products.reduce((sum, p) => sum + p.quantity, 0)}</p>
+                    <div className="card group hover:border-green-400">
+                        <p className="text-gray-400 mb-2 text-sm">Total Units</p>
+                        <p className="text-4xl font-bold text-green-400 group-hover:text-green-300">{products.reduce((sum, p) => sum + p.quantity, 0)}</p>
+                        <p className="mt-3 text-xs text-gray-500">Stock quantity</p>
                     </div>
-                    <div className="bg-slate-800 p-6 rounded-2xl">
-                        <p className="text-gray-400 mb-1">Inventory Value</p>
-                        <p className="text-3xl font-bold">₹{totalValue.toLocaleString()}</p>
+                    <div className="card group hover:border-purple-400">
+                        <p className="text-gray-400 mb-2 text-sm">Inventory Value</p>
+                        <p className="text-4xl font-bold text-purple-400 group-hover:text-purple-300">₹{(totalValue/1000).toFixed(1)}k</p>
+                        <p className="mt-3 text-xs text-gray-500">Total worth</p>
                     </div>
-                    <div className="bg-red-900 bg-opacity-40 p-6 rounded-2xl border border-red-600">
-                        <p className="text-gray-400 mb-1">Low Stock Items</p>
-                        <p className="text-3xl font-bold text-red-400">{lowStockItems}</p>
+                    <div className="card border-l-4 border-red-500 bg-gradient-to-br from-red-950/30 to-orange-950/20 group hover:border-red-300">
+                        <p className="text-gray-400 mb-2 text-sm">Low Stock Items</p>
+                        <p className="text-4xl font-bold text-red-400 group-hover:text-red-300">{lowStockItems}</p>
+                        <p className="mt-3 text-xs text-red-500">⚠️ Needs restocking</p>
                     </div>
                 </div>
 
                 {/* Search and Add Button */}
-                <div className="flex gap-4 mb-8">
+                <div className="flex gap-4 mb-8 flex-col sm:flex-row">
                     <div className="flex-1 relative">
                         <Search className="absolute left-4 top-3 text-gray-500" size={20} />
                         <input
@@ -120,57 +127,63 @@ function Warehouse() {
                             placeholder="Search by product name or location..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500"
+                            className="w-full pl-12 pr-4 py-2.5 bg-slate-700/50 border border-cyan-500/30 rounded-lg focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 transition text-white placeholder-gray-500"
                         />
                     </div>
                     <button
                         onClick={handleAddClick}
-                        className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg flex items-center gap-2 transition"
+                        className="btn-primary flex items-center justify-center gap-2 hover:scale-105 transition"
                     >
                         <Plus size={20} />
-                        Add Product
+                        <span>Add Product</span>
                     </button>
                 </div>
 
                 {/* Product Table */}
-                <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-lg">
+                <div className="glass rounded-xl overflow-hidden shadow-2xl border border-cyan-500/20">
                     <table className="w-full">
                         <thead>
-                            <tr className="bg-slate-700 border-b border-slate-600">
-                                <th className="px-6 py-4 text-left">Product Name</th>
-                                <th className="px-6 py-4 text-left">Quantity</th>
-                                <th className="px-6 py-4 text-left">Location</th>
-                                <th className="px-6 py-4 text-left">Price (₹)</th>
-                                <th className="px-6 py-4 text-left">Total Value</th>
-                                <th className="px-6 py-4 text-center">Actions</th>
+                            <tr className="bg-gradient-to-r from-cyan-950/40 to-purple-950/40 border-b border-cyan-500/20">
+                                <th className="px-6 py-4 text-left font-semibold text-cyan-300">Product Name</th>
+                                <th className="px-6 py-4 text-left font-semibold text-cyan-300">Quantity</th>
+                                <th className="px-6 py-4 text-left font-semibold text-cyan-300">Location</th>
+                                <th className="px-6 py-4 text-left font-semibold text-cyan-300">Price (₹)</th>
+                                <th className="px-6 py-4 text-left font-semibold text-cyan-300">Total Value</th>
+                                <th className="px-6 py-4 text-center font-semibold text-cyan-300">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredProducts.length > 0 ? (
                                 filteredProducts.map(product => (
-                                    <tr key={product.id} className="border-b border-slate-700 hover:bg-slate-700 transition">
+                                    <tr key={product.id} className="border-b border-cyan-500/10 hover:bg-cyan-950/20 transition">
                                         <td className="px-6 py-4 flex items-center gap-3">
-                                            <Package size={20} className="text-blue-500" />
-                                            {product.name}
+                                            <Package size={20} className="text-cyan-400" />
+                                            <span className="font-medium">{product.name}</span>
                                         </td>
                                         <td className="px-6 py-4">
-                                            <span className={`px-3 py-1 rounded-full text-sm ${product.quantity < 50 ? 'bg-red-900 text-red-200' : 'bg-green-900 text-green-200'}`}>
+                                            <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                                                product.quantity < 50 
+                                                    ? 'bg-red-900/40 text-red-300 border border-red-500/30' 
+                                                    : 'bg-green-900/40 text-green-300 border border-green-500/30'
+                                            }`}>
                                                 {product.quantity}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4 font-mono">{product.location}</td>
+                                        <td className="px-6 py-4 font-mono text-cyan-300">{product.location}</td>
                                         <td className="px-6 py-4">₹{product.price}</td>
-                                        <td className="px-6 py-4 font-bold">₹{(product.quantity * product.price).toLocaleString()}</td>
+                                        <td className="px-6 py-4 font-bold text-green-400">₹{(product.quantity * product.price).toLocaleString()}</td>
                                         <td className="px-6 py-4 flex gap-2 justify-center">
                                             <button
                                                 onClick={() => handleEditClick(product)}
-                                                className="bg-blue-600 hover:bg-blue-700 p-2 rounded transition"
+                                                className="bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 p-2 rounded transition flex items-center justify-center"
+                                                title="Edit"
                                             >
                                                 <Edit2 size={16} />
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(product.id)}
-                                                className="bg-red-600 hover:bg-red-700 p-2 rounded transition"
+                                                className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 p-2 rounded transition flex items-center justify-center"
+                                                title="Delete"
                                             >
                                                 <Trash2 size={16} />
                                             </button>
@@ -179,8 +192,8 @@ function Warehouse() {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="6" className="px-6 py-8 text-center text-gray-400">
-                                        No products found
+                                    <td colSpan="6" className="px-6 py-8 text-center text-gray-500">
+                                        ✨ No products found. Try a different search or add a new product.
                                     </td>
                                 </tr>
                             )}
